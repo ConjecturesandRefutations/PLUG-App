@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.logo}>PLUG</Text>
@@ -32,9 +32,10 @@ const LoginScreen = () => {
 
         <Text style={styles.signupPrompt}>Don't have an account?</Text>
 
-        <TouchableOpacity>
-          <Text style={styles.signupText}>Signup</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
+          <Text style={styles.signupLink}>Signup</Text>
         </TouchableOpacity>
+
       </View>
 
       <View style={styles.footer}>
@@ -113,14 +114,12 @@ const styles = StyleSheet.create({
   },
   signupPrompt: {
     marginTop: 20,
-    textAlign: 'center',
     color: '#333',
   },
-  signupText: {
-    textAlign: 'center',
-    color: '#007bff',
-    marginTop: 6,
-    fontWeight: '600',
+  signupLink: {
+    color: '#007BFF',
+    marginTop: 5,
+    fontSize: 14,
   },
   footer: {
     flexDirection: 'row',

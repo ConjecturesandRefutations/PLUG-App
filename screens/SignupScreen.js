@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default function SignupScreen() {
+export default function SignupScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.logo}>PLUG</Text>
@@ -25,10 +25,13 @@ export default function SignupScreen() {
           <Text style={styles.signupButtonText}>SIGNUP</Text>
         </TouchableOpacity>
 
-        <Text style={styles.loginPrompt}>Already Have an Account?</Text>
-        <TouchableOpacity>
-          <Text style={styles.loginLink}>Login</Text>
-        </TouchableOpacity>
+        <View style={styles.loginContainer}>
+          <Text style={styles.loginPrompt}>Already Have an Account?</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <Text style={styles.loginLink}>Login</Text>
+          </TouchableOpacity>
+        </View>
+
       </View>
 
       <Text style={styles.footerLinks}>
@@ -78,31 +81,33 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
+    gap:10,
   },
   nameInput: {
     flex: 1,
-    marginRight: 10,
   },
   input: {
-    backgroundColor: '#f0f0f0',
+    borderWidth: 1,
+    borderColor: '#ddd',
     padding: 12,
-    borderRadius: 5,
-    marginBottom: 15,
-  },
-  signupButton: {
-    backgroundColor: '#007BFF',
-    paddingVertical: 12,
-    paddingHorizontal: 30,
-    borderRadius: 5,
-    marginBottom: 15,
+    marginBottom: 12,
+    borderRadius: 6,
+    backgroundColor: '#fafafa',
     width: '100%',
+  },
+   signupButton: {
+    backgroundColor: '#007bff',
+    paddingVertical: 12,
+    borderRadius: 6,
     alignItems: 'center',
+    width: '100%',
   },
   signupButtonText: {
     color: '#fff',
     fontWeight: 'bold',
   },
   loginPrompt: {
+    marginTop: 20,
     fontSize: 14,
     color: '#333',
   },
@@ -117,4 +122,8 @@ const styles = StyleSheet.create({
     marginTop: 30,
     textAlign: 'center',
   },
+  loginContainer: {
+  alignSelf: 'flex-start',
+},
+
 });
