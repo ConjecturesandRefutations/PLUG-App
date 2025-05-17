@@ -1,27 +1,101 @@
+import React, { useState } from 'react';
 import Footer from '../components/Footer';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 
 export default function SignupScreen({ navigation }) {
+  const [firstName, setFirstName] = useState('');
+  const [surname, setSurname] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleSignup = async () => {
+    if (!firstName || !surname || !email || !password || !confirmPassword) {
+      Alert.alert('Please fill in all fields');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      Alert.alert('Passwords do not match');
+      return;
+    }
+
+    try {
+      const response = await fetch('https://plugspot.co.uk/mobile_api_integration/signup.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        first_name: firstName,
+        surname: surname,
+        email: email,
+        password: password
+      })
+    });
+
+      const result = await response.json();
+
+      if (result.success) {
+        Alert.alert('Signup successful!');
+        navigation.navigate('Login');
+      } else {
+        Alert.alert('Signup failed', result.message || 'Please try again.');
+      }
+
+    } catch (error) {
+      console.error(error);
+      Alert.alert('An error occurred. Please try again later.');
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.logo}>PLUG</Text>
-      <Text style={styles.tagline}>
-        Connect, communicate and share with friends and family
-      </Text>
+      <Text style={styles.tagline}>Connect, communicate and share with friends and family</Text>
 
       <View style={styles.signupBox}>
         <Text style={styles.signupTitle}>Signup</Text>
 
         <View style={styles.nameRow}>
-          <TextInput placeholder="First Name" style={[styles.input, styles.nameInput]} />
-          <TextInput placeholder="Surname" style={[styles.input, styles.nameInput]} />
+          <TextInput
+            placeholder="First Name"
+            style={[styles.input, styles.nameInput]}
+            value={firstName}
+            onChangeText={setFirstName}
+          />
+          <TextInput
+            placeholder="Surname"
+            style={[styles.input, styles.nameInput]}
+            value={surname}
+            onChangeText={setSurname}
+          />
         </View>
 
-        <TextInput placeholder="Email" style={styles.input} />
-        <TextInput placeholder="Password" secureTextEntry style={styles.input} />
-        <TextInput placeholder="Confirm Password" secureTextEntry style={styles.input} />
+        <TextInput
+          placeholder="Email"
+          style={styles.input}
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+        <TextInput
+          placeholder="Password"
+          secureTextEntry
+          style={styles.input}
+          value={password}
+          onChangeText={setPassword}
+        />
+        <TextInput
+          placeholder="Confirm Password"
+          secureTextEntry
+          style={styles.input}
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+        />
 
-        <TouchableOpacity style={styles.signupButton}>
+        <TouchableOpacity style={styles.signupButton} onPress={handleSignup}>
           <Text style={styles.signupButtonText}>SIGNUP</Text>
         </TouchableOpacity>
 
@@ -31,7 +105,6 @@ export default function SignupScreen({ navigation }) {
             <Text style={styles.loginLink}>Login</Text>
           </TouchableOpacity>
         </View>
-
       </View>
 
       <Footer />
