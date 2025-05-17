@@ -37,7 +37,11 @@ export default function SignupScreen({ navigation }) {
       const result = await response.json();
 
       if (result.success) {
-        Alert.alert('Signup successful!');
+        Alert.alert(
+        'Signup successful!',
+        'Please check your email',
+        'to verify your account.'
+      );
         navigation.navigate('Login');
       } else {
         Alert.alert('Signup failed', result.message || 'Please try again.');
