@@ -1,4 +1,4 @@
-import React from 'react';
+import Footer from '../components/Footer';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default function SignupScreen({ navigation }) {
@@ -34,9 +34,7 @@ export default function SignupScreen({ navigation }) {
 
       </View>
 
-      <Text style={styles.footerLinks}>
-        Privacy Policy | Terms and Conditions
-      </Text>
+      <Footer />
     </View>
   );
 }
@@ -44,16 +42,21 @@ export default function SignupScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#F5F4F4',
     paddingHorizontal: 30,
     justifyContent: 'center',
     alignItems: 'center',
   },
   logo: {
-    fontSize: 48,
-    fontWeight: 'bold',
+    fontSize: 70,
+    fontWeight: '900',
     letterSpacing: 2,
     marginBottom: 10,
+    fontStyle: 'italic',
+    textShadowColor: 'black',
+    textShadowOffset: { width: 5, height: 5 },
+    textShadowRadius: 1,
+    color: 'pink',
   },
   tagline: {
     fontSize: 14,
@@ -115,12 +118,6 @@ const styles = StyleSheet.create({
     color: '#007BFF',
     marginTop: 5,
     fontSize: 14,
-  },
-  footerLinks: {
-    fontSize: 12,
-    color: '#007BFF',
-    marginTop: 30,
-    textAlign: 'center',
   },
   loginContainer: {
   alignSelf: 'flex-start',

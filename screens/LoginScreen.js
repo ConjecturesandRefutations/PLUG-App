@@ -1,4 +1,4 @@
-import React from 'react';
+import Footer from '../components/Footer';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
@@ -38,15 +38,8 @@ const LoginScreen = ({ navigation }) => {
 
       </View>
 
-      <View style={styles.footer}>
-        <TouchableOpacity>
-          <Text style={styles.footerLink}>Privacy Policy</Text>
-        </TouchableOpacity>
-        <Text style={styles.footerSeparator}>|</Text>
-        <TouchableOpacity>
-          <Text style={styles.footerLink}>Terms and Conditions</Text>
-        </TouchableOpacity>
-      </View>
+      <Footer />
+
     </ScrollView>
   );
 };
@@ -57,13 +50,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexGrow: 1,
-    backgroundColor: '#f6f6f6',
+    backgroundColor: '#F5F4F4',
   },
   logo: {
-    fontSize: 40,
+    fontSize: 70,
     fontWeight: '900',
     letterSpacing: 2,
     marginBottom: 10,
+    fontStyle: 'italic',
+    textShadowColor: 'black',
+    textShadowOffset: { width: 5, height: 5 },
+    textShadowRadius: 1,
+    color: 'pink',
+    fontFamily: 'Open Sans',
   },
   tagline: {
     textAlign: 'center',
@@ -120,19 +119,6 @@ const styles = StyleSheet.create({
     color: '#007BFF',
     marginTop: 5,
     fontSize: 14,
-  },
-  footer: {
-    flexDirection: 'row',
-    marginTop: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  footerLink: {
-    color: '#007bff',
-    marginHorizontal: 5,
-  },
-  footerSeparator: {
-    color: '#007bff',
   },
 });
 

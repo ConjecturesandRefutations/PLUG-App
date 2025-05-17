@@ -1,0 +1,34 @@
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+
+const Footer = () => {
+  return (
+    <View style={styles.footer}>
+      <TouchableOpacity>
+        <Text style={styles.footerLink}>Privacy Policy</Text>
+      </TouchableOpacity>
+      <Text style={styles.footerSeparator}> | </Text>
+      <TouchableOpacity>
+        <Text style={styles.footerLink}>Terms and Conditions</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  footer: {
+    flexDirection: 'row',
+    marginTop: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  footerLink: {
+    fontSize: 12,
+    color: '#007BFF',
+    textAlign: 'center',
+  },
+  footerSeparator: {
+    color: '#007bff',
+  },
+});
+
+export default Footer;
