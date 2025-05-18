@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Footer from '../components/Footer';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, ScrollView, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 
 export default function SignupScreen({ navigation }) {
   const [firstName, setFirstName] = useState('');
@@ -54,7 +54,7 @@ export default function SignupScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.logo}>PLUG</Text>
       <Text style={styles.tagline}>Connect, communicate and share with friends and family</Text>
 
@@ -112,7 +112,7 @@ export default function SignupScreen({ navigation }) {
       </View>
 
       <Footer />
-    </View>
+    </ScrollView>
   );
 }
 
