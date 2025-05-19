@@ -1,13 +1,16 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const Footer = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.footer}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Terms')}>
         <Text style={styles.footerLink}>Privacy Policy</Text>
       </TouchableOpacity>
       <Text style={styles.footerSeparator}> | </Text>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Terms')}>
         <Text style={styles.footerLink}>Terms and Conditions</Text>
       </TouchableOpacity>
     </View>
