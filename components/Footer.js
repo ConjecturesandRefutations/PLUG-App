@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     <View style={styles.footer}>
-      <TouchableOpacity onPress={() => navigation.navigate('Terms')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Privacy')}>
         <Text style={styles.footerLink}>Privacy Policy</Text>
       </TouchableOpacity>
       <Text style={styles.footerSeparator}> | </Text>

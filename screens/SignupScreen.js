@@ -122,7 +122,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F4F4',
     paddingHorizontal: 30,
     justifyContent: 'center',
-    alignItems: 'center',
   },
   logo: {
     fontSize: 70,
@@ -160,7 +159,6 @@ const styles = StyleSheet.create({
   nameRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '100%',
     gap:10,
   },
   nameInput: {
